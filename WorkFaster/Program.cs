@@ -24,6 +24,7 @@ namespace WorkFaster
         private static bool ctrlPressed = false;
         private static bool ctrlAPressed = false;
 
+
         [STAThread]
         static void Main()
         {

@@ -15,7 +15,7 @@ namespace WorkFaster
         {
             InitializeComponent();
 
-
+            // Initializing api data 
             this.apiKeytxt.Text = WorkFaster.Properties.Settings.Default.apiKeySet;
             this.apiTokentxt.Text = WorkFaster.Properties.Settings.Default.apiTokenSet;
             this.idListtxt.Text = WorkFaster.Properties.Settings.Default.apiIdListSet;
@@ -53,7 +53,7 @@ namespace WorkFaster
 
                 if (string.IsNullOrWhiteSpace(apiKey) || string.IsNullOrWhiteSpace(accessToken))
                 {
-                    MessageBox.Show("Please enter your Trello API key and access token.");
+                    MessageBox.Show("Please enter your Trello API key, access token and Id List.");
                     return;
                 }
 
@@ -62,11 +62,11 @@ namespace WorkFaster
 
                 if (success)
                 {
-                    MessageBox.Show("Text sent to Trello successfully.");
+                    MessageBox.Show("Sent to Trello successfully.");
                 }
                 else
                 {
-                    MessageBox.Show("Failed to send text to Trello.");
+                    MessageBox.Show("Error sending to Trello.");
                 }
             }
         }
