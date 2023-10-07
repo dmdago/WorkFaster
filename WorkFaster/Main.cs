@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace WorkFaster
 {
@@ -13,6 +14,11 @@ namespace WorkFaster
         public Main()
         {
             InitializeComponent();
+
+
+            this.apiKeytxt.Text = WorkFaster.Properties.Settings.Default.apiKeySet;
+            this.apiTokentxt.Text = WorkFaster.Properties.Settings.Default.apiTokenSet;
+            this.idListtxt.Text = WorkFaster.Properties.Settings.Default.apiIdListSet;
 
             // Set the initial state of the form to Minimized
             this.WindowState = FormWindowState.Minimized;
@@ -41,9 +47,9 @@ namespace WorkFaster
             if (!string.IsNullOrWhiteSpace(selectedText))
             {
                 // Get API key and access token from TextBoxes
-                string apiKey = "f7c1a0293aa0dc1b191179b639ae6384";
-                string accessToken = "ATTA55f2f9a7150ff195237459151773c6861162b23307c048223829600d23a816a49DD1746B";
-                string idList = "64f9e4715aedf3b3f22800d9";
+                string apiKey = this.apiKeytxt.Text;
+                string accessToken = this.apiTokentxt.Text;
+                string idList = this.idListtxt.Text;
 
                 if (string.IsNullOrWhiteSpace(apiKey) || string.IsNullOrWhiteSpace(accessToken))
                 {
@@ -110,6 +116,12 @@ namespace WorkFaster
             {
                 Hide();
                 notifyIcon.Visible = true;
+
+                    WorkFaster.Properties.Settings.Default.apiKeySet = this.apiKeytxt.Text;
+                    WorkFaster.Properties.Settings.Default.apiTokenSet = this.apiTokentxt.Text;
+                    WorkFaster.Properties.Settings.Default.apiIdListSet = this.idListtxt.Text;
+                    WorkFaster.Properties.Settings.Default.Save();
+            
             }
         }
 
@@ -128,6 +140,11 @@ namespace WorkFaster
 
             // Close app
             Application.Exit();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

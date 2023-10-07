@@ -126,6 +126,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "WordAid";
+            Load += Main_Load;
             Resize += Main_Resize;
             ResumeLayout(false);
             PerformLayout();
