@@ -15,47 +15,47 @@ namespace WorkFaster
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e) // Marca como async y cambia a async void
+        private async void button1_Click(object sender, EventArgs e)
         {
-            // Obtiene el texto seleccionado
-            string selectedText = "asd";
+            // Get the selected text
+            string selectedText = "asd"; // Replace with actual text selection logic
 
-            // Verifica que haya texto seleccionado
+            // Check if there is selected text
             if (!string.IsNullOrWhiteSpace(selectedText))
             {
-                // Obtiene la clave de API y el token de acceso de los TextBox
+                // Get API key and access token from TextBoxes
                 string apiKey = "f7c1a0293aa0dc1b191179b639ae6384";
                 string accessToken = "ATTA55f2f9a7150ff195237459151773c6861162b23307c048223829600d23a816a49DD1746B";
                 string idList = "64f9e4715aedf3b3f22800d9";
 
                 if (string.IsNullOrWhiteSpace(apiKey) || string.IsNullOrWhiteSpace(accessToken))
                 {
-                    MessageBox.Show("Por favor, ingresa la clave de API y el token de acceso de Trello.");
+                    MessageBox.Show("Please enter your Trello API key and access token.");
                     return;
                 }
 
-                // Realiza la solicitud POST a la API de Trello
-                bool success = await EnviarTextoATrello(selectedText, apiKey, accessToken, idList);
+                // Send the text to Trello using a POST request
+                bool success = await SendTextToTrello(selectedText, apiKey, accessToken, idList);
 
                 if (success)
                 {
-                    MessageBox.Show("Texto enviado a Trello correctamente.");
+                    MessageBox.Show("Text sent to Trello successfully.");
                 }
                 else
                 {
-                    MessageBox.Show(success.ToString());
+                    MessageBox.Show("Failed to send text to Trello.");
                 }
             }
         }
 
-        private async Task<bool> EnviarTextoATrello(string selectedText, string apiKey, string accessToken, string idList)
+        private async Task<bool> SendTextToTrello(string selectedText, string apiKey, string accessToken, string idList)
         {
             try
             {
-                // Crea un objeto HttpClient para hacer la solicitud POST
+                // Create an HttpClient object for making the POST request
                 using (HttpClient client = new HttpClient())
                 {
-                    // Crea los datos que se enviarán a Trello
+                    // Create the data to be sent to Trello
                     var data = new
                     {
                         name = selectedText,
@@ -65,22 +65,22 @@ namespace WorkFaster
                         idList = idList
                     };
 
-                    // Convierte los datos a formato JSON
+                    // Serialize the data to JSON format
                     string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(data);
 
-                    // Configura el contenido de la solicitud HTTP
+                    // Configure the HTTP request content
                     var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                    // Realiza la solicitud POST a la API de Trello
+                    // Send the POST request to the Trello API
                     HttpResponseMessage response = await client.PostAsync(TrelloApiUrl, content);
 
-                    // Verifica si la solicitud fue exitosa
+                    // Check if the request was successful
                     return response.IsSuccessStatusCode;
                 }
             }
             catch (Exception)
             {
-                return false; // Manejo de errores
+                return false; // Error handling
             }
         }
     }
