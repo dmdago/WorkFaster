@@ -13,6 +13,23 @@ namespace WorkFaster
         public Main()
         {
             InitializeComponent();
+
+            // Set the initial state of the form to Minimized
+            this.WindowState = FormWindowState.Minimized;
+
+            // Optionally, you can hide the window if you don't want it to appear in the taskbar
+            this.ShowInTaskbar = false;
+
+            // Create ContextMenuStrip
+            contextMenuStrip = new ContextMenuStrip();
+
+            // Add "Exit" option
+            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Exit");
+            exitMenuItem.Click += exitMenuItem_Click;
+            contextMenuStrip.Items.Add(exitMenuItem);
+
+            // Assign ContextMenuStrip
+            notifyIcon.ContextMenuStrip = contextMenuStrip;
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -82,6 +99,35 @@ namespace WorkFaster
             {
                 return false; // Error handling
             }
+        }
+
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            //if the form is minimized
+            //hide it from the task bar
+            //and show the system tray icon (represented by the NotifyIcon control)
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon.Visible = true;
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon.Visible = false;
+        }
+
+        private void exitMenuItem_Click(object sender, EventArgs e)
+        {
+            // Clean everything
+            // Pending code
+
+
+            // Close app
+            Application.Exit();
         }
     }
 }
