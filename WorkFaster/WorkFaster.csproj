@@ -13,6 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="UIAutomationClient">
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\UIAutomationClient.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationClientSideProviders">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\6.0.22\ref\net6.0\UIAutomationClientSideProviders.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -26,5 +35,4 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
 </Project>

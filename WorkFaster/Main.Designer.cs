@@ -48,7 +48,7 @@
             callApiButton.TabIndex = 0;
             callApiButton.Text = "Call API";
             callApiButton.UseVisualStyleBackColor = true;
-            callApiButton.Click += button1_Click;
+            callApiButton.Click += callApiButton_Click;
             // 
             // notifyIcon
             // 
