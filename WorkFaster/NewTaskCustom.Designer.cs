@@ -57,6 +57,7 @@
             ClientSize = new Size(800, 137);
             Controls.Add(customTasktxt);
             Controls.Add(customTaskBtn);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "NewTaskCustom";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Custom Task";
