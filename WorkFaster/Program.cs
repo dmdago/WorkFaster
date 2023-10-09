@@ -76,7 +76,7 @@ namespace WorkFaster
                 {
                     shiftPressed = true;
                 }
-                else if (ctrlPressed && altPressed && shiftPressed && vkCode == 65) // CTRL + ALT + SHIFT + A
+                else if (ctrlPressed && altPressed && shiftPressed && vkCode == 81) // CTRL + ALT + SHIFT + Q
                 {
                     ctrlPressed = false;
                     altPressed = false;
@@ -84,6 +84,16 @@ namespace WorkFaster
 
                     // Call an async method to perform the asynchronous tasks
                     PerformAsyncTasks();
+                }
+                else if (ctrlPressed && altPressed && shiftPressed && vkCode == 87) // CTRL + ALT + SHIFT + 87
+                {
+                    ctrlPressed = false;
+                    altPressed = false;
+                    shiftPressed = false;
+
+                    // Call an async method to perform the asynchronous tasks
+                    // Open the NewTaskCustom form
+                    OpenNewTaskCustomForm();
                 }
                 else
                 {
@@ -113,7 +123,7 @@ namespace WorkFaster
             }
         }
 
-        private static async Task Fnname(string clipboardText)
+        public static async Task Fnname(string clipboardText)
         {
             // Check if there is clipboard text
             if (!string.IsNullOrWhiteSpace(clipboardText))
@@ -186,7 +196,7 @@ namespace WorkFaster
             messageForm.Show();
 
             // Wait for 5 seconds (5000 ms)
-            await Task.Delay(5000);
+            await Task.Delay(1000);
 
             // Close the message form
             messageForm.Close();
@@ -220,6 +230,24 @@ namespace WorkFaster
             staThread.Start();
             staThread.Join();
         }
+
+        public static void OpenNewTaskCustomForm()
+        {
+            var newTaskCustomForm = new NewTaskCustom();
+
+            // Get API key and access token from application settings
+            string apiKey = WorkFaster.Properties.Settings.Default.apiKeySet;
+            string accessToken = WorkFaster.Properties.Settings.Default.apiTokenSet;
+            string idList = WorkFaster.Properties.Settings.Default.apiIdListSet;
+
+
+                newTaskCustomForm.Show();
+
+        }
+
+
+        // Reference to the existing newTaskCustomForm
+        private static Form newTaskCustomForm;
 
         // Delegate for the hook callback function
         public delegate IntPtr HookCallbackDelegate(int nCode, IntPtr wParam, IntPtr lParam);

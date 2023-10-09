@@ -1,6 +1,6 @@
 ﻿namespace WorkFaster
 {
-    partial class MessageForm
+    partial class NewTaskCustom
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            messageLbl = new Label();
+            customTaskBtn = new Button();
+            customTasktxt = new TextBox();
             SuspendLayout();
             // 
-            // messageLbl
+            // customTaskBtn
             // 
-            messageLbl.AutoSize = true;
-            messageLbl.Location = new Point(27, 21);
-            messageLbl.Margin = new Padding(5, 0, 5, 0);
-            messageLbl.Name = "messageLbl";
-            messageLbl.Size = new Size(0, 41);
-            messageLbl.TabIndex = 0;
+            customTaskBtn.Location = new Point(12, 65);
+            customTaskBtn.Name = "customTaskBtn";
+            customTaskBtn.Size = new Size(767, 58);
+            customTaskBtn.TabIndex = 0;
+            customTaskBtn.Text = "Send";
+            customTaskBtn.UseVisualStyleBackColor = true;
+            customTaskBtn.Click += customTaskBtn_Click;
             // 
-            // MessageForm
+            // customTasktxt
+            // 
+            customTasktxt.Location = new Point(12, 12);
+            customTasktxt.Name = "customTasktxt";
+            customTasktxt.Size = new Size(767, 47);
+            customTasktxt.TabIndex = 1;
+            customTasktxt.KeyDown += customTasktxt_KeyDown;
+            // 
+            // NewTaskCustom
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 60);
-            ControlBox = false;
-            Controls.Add(messageLbl);
-            FormBorderStyle = FormBorderStyle.None;
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "MessageForm";
+            ClientSize = new Size(800, 137);
+            Controls.Add(customTasktxt);
+            Controls.Add(customTaskBtn);
+            Name = "NewTaskCustom";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MessageForm";
-            TopMost = true;
+            Text = "Custom Task";
+            Load += NewTaskCustom_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label messageLbl;
+        private Button customTaskBtn;
+        private TextBox customTasktxt;
     }
 }
