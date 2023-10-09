@@ -30,7 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            callApiButton = new Button();
             notifyIcon = new NotifyIcon(components);
             apiKeylbl = new Label();
             apiTokenlbl = new Label();
@@ -39,16 +38,6 @@
             apiTokentxt = new TextBox();
             idListtxt = new TextBox();
             SuspendLayout();
-            // 
-            // callApiButton
-            // 
-            callApiButton.Location = new Point(565, 324);
-            callApiButton.Name = "callApiButton";
-            callApiButton.Size = new Size(188, 58);
-            callApiButton.TabIndex = 0;
-            callApiButton.Text = "Call API";
-            callApiButton.UseVisualStyleBackColor = true;
-            callApiButton.Click += callApiButton_Click;
             // 
             // notifyIcon
             // 
@@ -113,28 +102,25 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 434);
+            ClientSize = new Size(800, 312);
             Controls.Add(idListtxt);
             Controls.Add(apiTokentxt);
             Controls.Add(apiKeytxt);
             Controls.Add(idListlbl);
             Controls.Add(apiTokenlbl);
             Controls.Add(apiKeylbl);
-            Controls.Add(callApiButton);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Main";
             ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "WordAid";
-            Load += Main_Load;
             Resize += Main_Resize;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button callApiButton;
         private NotifyIcon notifyIcon;
         private ContextMenuStrip contextMenuStrip;
         private Label apiKeylbl;

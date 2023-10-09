@@ -41,7 +41,7 @@ namespace WorkFaster
         {
             //if the form is minimized
             //hide it from the task bar
-            //and show the system tray icon (represented by the NotifyIcon control)
+            //and show the system tray icon (represented by the NotifyIcon control
             if (this.WindowState == FormWindowState.Minimized)
             {
                 Hide();
@@ -51,13 +51,13 @@ namespace WorkFaster
                 WorkFaster.Properties.Settings.Default.apiTokenSet = this.apiTokentxt.Text;
                 WorkFaster.Properties.Settings.Default.apiIdListSet = this.idListtxt.Text;
                 WorkFaster.Properties.Settings.Default.Save();
-
             }
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
+            this.ShowInTaskbar = true;
             this.WindowState = FormWindowState.Normal;
             notifyIcon.Visible = false;
         }
@@ -70,16 +70,6 @@ namespace WorkFaster
 
             // Close app
             Application.Exit();
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void callApiButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
